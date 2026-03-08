@@ -1,1 +1,1 @@
-###Day 1:Two pointer easy questions
+Day 1:Two pointer easy questions
