@@ -1,0 +1,24 @@
+class Solution {
+public:
+    int maxProduct(vector<int>& arr) {
+       int currMax = arr[0];   // max product ending here
+    int currMin = arr[0];   // min product ending here (could flip!)
+    int best    = arr[0];
+
+    for (int i = 1; i < arr.size(); i++) {
+        // multiplying by arr[i] can flip max and min
+        int tempMax = currMax;
+
+        currMax = max({arr[i],
+                       currMax * arr[i],
+                       currMin * arr[i]});   // min*neg = big positive!
+
+        currMin = min({arr[i],
+                       tempMax * arr[i],
+                       currMin * arr[i]});   // max*neg = big negative!
+
+        best = max(best, currMax);
+    }
+    return best;
+    }
+};
